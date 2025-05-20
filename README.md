@@ -222,12 +222,16 @@ public class PlayerMovement : MonoBehaviour
 # Notes
 - Adjust NavMesh, layers, and prefab references correctly before running.
 
--Tweak speeds, ranges, cooldowns, and other variables in the inspector for gameplay tuning.
+- Tweak speeds, ranges, cooldowns, and other variables in the inspector for gameplay tuning.
 
--You can expand AI with additional states like Fleeing, Searching, or Idle behaviors.
+- You can expand AI with additional states like Fleeing, Searching, or Idle behaviors.
 
-# License
--This project is open source and free to use for learning and personal projects.
+## License
+
+This project is licensed under the MIT License.  
+You are free to use, modify, and distribute this code for both personal and commercial purposes.  
+See the [LICENSE](LICENSE) file for more details.
+
 ---
 
 # Happy coding! 🚀
