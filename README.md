@@ -150,8 +150,8 @@ public class AI_Scripts : MonoBehaviour
 ```
 ---
 
-
-###PlayerMovement.cs
+---
+#PlayerMovement.cs
 
 ```csharp
 using System.Collections;
@@ -220,15 +220,15 @@ public class PlayerMovement : MonoBehaviour
 }
 ```
 ---
-##Notes
+#Notes
 - Adjust NavMesh, layers, and prefab references correctly before running.
 
 -Tweak speeds, ranges, cooldowns, and other variables in the inspector for gameplay tuning.
 
 -You can expand AI with additional states like Fleeing, Searching, or Idle behaviors.
 
-##License
+#License
 -This project is open source and free to use for learning and personal projects.
 ---
 
-###Happy coding! 🚀
+#Happy coding! 🚀
