@@ -1,79 +1,82 @@
-# Unity AI: Patrolling, Chasing & Attacking
-
+Unity AI: Patrolling, Chasing & Attacking
 This Unity project demonstrates a simple enemy AI system with patrolling, chasing, and attacking behaviors, alongside a basic player movement and camera control setup.
 
----
+Project Overview
+The enemy AI uses Unity’s NavMeshAgent to patrol randomly within a defined area, detect the player within sight range, chase the player, and attack by shooting projectiles when in close range. The player can move freely using WASD controls, jump, and look around using the mouse.
 
-## Project Overview
+Features
+Enemy AI States: Patrol → Chase → Attack
 
-The enemy AI uses Unity’s `NavMeshAgent` to patrol randomly within a defined area, detect the player within sight range, chase the player, and attack by shooting projectiles when in close range. The player can move freely using WASD controls, jump, and look around using the mouse.
+Player Movement: WASD movement, jumping, gravity
 
----
+Mouse Look: First-person camera control with clamped vertical rotation
 
-## Features
+Projectile Attack: Enemy fires projectiles with cooldown
 
-- **Enemy AI States:** Patrol → Chase → Attack
-- **Player Movement:** WASD movement, jumping, gravity
-- **Mouse Look:** First-person camera control with clamped vertical rotation
-- **Projectile Attack:** Enemy fires projectiles with cooldown
-
----
-
-## Scripts Overview
-
-### 1. AI_Scripts.cs
-
+Scripts Overview
+1. AI_Scripts.cs
 This script manages enemy behavior using a finite state approach:
 
-- **Patrolling:** Randomly moves to walkpoints within a set range on the ground.
-- **Chasing:** Pursues the player when detected within sight range.
-- **Attacking:** Stops moving and fires a projectile when the player is within attack range.
-- **Detection:** Uses sphere checks to detect player presence.
-- **Attack Cooldown:** Prevents continuous firing by adding delay between attacks.
-- **Visual Debug:** Gizmos show sight and attack ranges in the editor.
+Patrolling: Randomly moves to walkpoints within a set range on the ground.
 
-### 2. PlayerMovement.cs
+Chasing: Pursues the player when detected within sight range.
 
+Attacking: Stops moving and fires a projectile when the player is within attack range.
+
+Detection: Uses sphere checks to detect player presence.
+
+Attack Cooldown: Prevents continuous firing by adding delay between attacks.
+
+Visual Debug: Gizmos show sight and attack ranges in the editor.
+
+2. PlayerMovement.cs
 This script controls the player’s movement and camera:
 
-- **Movement:** Uses `CharacterController` for smooth movement with gravity.
-- **Jumping:** Allows jumping only when grounded.
-- **Ground Check:** Checks for ground using a sphere collider to prevent jumping in mid-air.
-- **Mouse Look:** Rotates the player body horizontally and the camera vertically with clamping.
-- **Cursor Lock:** Locks and hides the cursor for better control.
+Movement: Uses CharacterController for smooth movement with gravity.
 
----
+Jumping: Allows jumping only when grounded.
 
-## How to Use
+Ground Check: Checks for ground using a sphere collider to prevent jumping in mid-air.
 
-1. **Set Up Scene:**
+Mouse Look: Rotates the player body horizontally and the camera vertically with clamping.
 
-   - Ensure your player GameObject is named `"Player"`.
-   - Attach `NavMeshAgent` to your enemy GameObject.
-   - Bake a NavMesh on your ground so enemies can navigate.
-   - Assign appropriate layers for ground and player to `whatISGround` and `whatisPlayer`.
+Cursor Lock: Locks and hides the cursor for better control.
 
-2. **Assign Scripts:**
+How to Use
+Set Up Scene:
 
-   - Attach `AI_Scripts.cs` to your enemy GameObject.
-   - Attach `PlayerMovement.cs` to your player GameObject.
-   - Assign the necessary references in the Inspector (e.g., `groundCheck`, `playerBody`, `projectile` prefab).
+Ensure your player GameObject is named "Player".
 
-3. **Projectile Setup:**
+Attach NavMeshAgent to your enemy GameObject.
 
-   - Create a projectile prefab with a Rigidbody component.
-   - Assign the prefab to the `projectile` field in the enemy’s `AI_Scripts` component.
+Bake a NavMesh on your ground so enemies can navigate.
 
-4. **Play:**
+Assign appropriate layers for ground and player to whatISGround and whatisPlayer.
 
-   - Press play and control the player using WASD and mouse.
-   - Observe the enemy patrolling, chasing, and attacking based on your movement.
+Assign Scripts:
 
----
+Attach AI_Scripts.cs to your enemy GameObject.
 
-## AI_Scripts.cs
+Attach PlayerMovement.cs to your player GameObject.
 
-```csharp
+Assign the necessary references in the Inspector (e.g., groundCheck, playerBody, projectile prefab).
+
+Projectile Setup:
+
+Create a projectile prefab with a Rigidbody component.
+
+Assign the prefab to the projectile field in the enemy’s AI_Scripts component.
+
+Play:
+
+Press play and control the player using WASD and mouse.
+
+Observe the enemy patrolling, chasing, and attacking based on your movement.
+
+AI_Scripts.cs
+csharp
+Copy
+Edit
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -172,7 +175,6 @@ public class AI_Scripts : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, sightRange);
     }
 }
-
 PlayerMovement.cs
 csharp
 Copy
@@ -198,7 +200,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform playerBody;
     public float mouseSensitivity = 100f;
-    public float xRotation = 0f;
+    private float xRotation = 0f;
 
     void Start()
     {
@@ -252,19 +254,3 @@ License
 This project is open source and free to use for learning and personal projects.
 
 Happy coding! 🚀
-
-yaml
-Copy
-Edit
-
----
-
-You can just **copy everything inside the markdown block** and paste it into your README.md on GitHub.
-
-If you want me to generate a shorter version or add sections like screenshots, instructions for building, or credits, just say!
-
-
-
-
-
-
